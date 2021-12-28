@@ -37,8 +37,8 @@ let gameStatus = ['NO WINNER','','','','','','','','',''];
 
 onClick('reset-game', () => {  
     let headerText = document.getElementById('turn');
-    let winAlert = document.getElementById('game-over');
-    winAlert.remove;
+    // let winAlert = document.getElementById('game-over');
+    // winAlert.remove;
      // clear the winning strategy 
     gameStatus = ['NO WINNER','','','','','','','','',''];
     // reset turn counter 'numOfTurn' to 1
@@ -65,7 +65,7 @@ function drawDOM() {
         document.getElementById(`btn-p-${index}`).innerHTML=index;
     }
     if (gameId > 0) {
-        $('alert').show();
+        $('#restart-game').show();
     } else {
         let lineBreak = document.createElement('br');
         tictactoeDiv.appendChild(lineBreak);
@@ -80,7 +80,7 @@ function drawDOM() {
     }
     gameId++;
     // Use setTimeout() to hide it again after 5 seconds
-    setTimeout(() => $('alert').hide(), 2000);
+    setTimeout(() => $('#restart-game').hide(), 2000);
 }
 
 
@@ -123,15 +123,21 @@ for (let btnIndex=1; btnIndex <=9; btnIndex++) {
                     headerText.innerHTML = `Game over!  ${winner}`;
                     console.log(`Game over! ${winner}`); 
                     // prompt/alert  
-                    let tictactoeDiv = document.getElementById('game-page');
-                    let lineBreak = document.createElement('br');
-                    tictactoeDiv.appendChild(lineBreak);
-                    let alert = document.createElement('alert');
-                    alert.setAttribute('class', 'alert alert-success');
-                    alert.setAttribute('role', 'alert');
-                    alert.setAttribute('id', 'game-over');
-                    alert.innerHTML = 'Tic-Tac-Toe Game has ended!';
-                    tictactoeDiv.appendChild(alert);  
+                    if (gameId > 0) {
+                        $('#game-over').show();
+                    } else {
+                        let tictactoeDiv = document.getElementById('game-page');
+                        let lineBreak = document.createElement('br');
+                        tictactoeDiv.appendChild(lineBreak);
+                        let gameOverAlert = document.createElement('alert');
+                        gameOverAlert.setAttribute('class', 'alert alert-success');
+                        gameOverAlert.setAttribute('role', 'alert');
+                        gameOverAlert.setAttribute('id', 'game-over');
+                        gameOverAlert.innerHTML = 'Tic-Tac-Toe Game has ended!';
+                        tictactoeDiv.appendChild(gameOverAlert);  
+                    }
+                    // Use setTimeout() to hide it again after 5 seconds
+                    setTimeout(() => $('#game-over').hide(), 2000);
                 }
                 
             } else {
