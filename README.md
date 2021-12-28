@@ -7,3 +7,6 @@
 FrontEndTechnologies is a 6 week course within the FESD Coding Bootcamp
 
 Week 5 Assignments:  Coding Assignment, Career, Research, LinkedIn posts, & Quiz
+
+Week 5 Coding Assignment is a Tic-Tac-Toe Game using Bootstrap, Jquery, HTML and CSS!
+
