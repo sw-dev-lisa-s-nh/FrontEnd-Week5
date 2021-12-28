@@ -200,7 +200,7 @@ function checkForWinner() {
                 && (gameStatus[3] !== '')) {
         winner = `Winner is ${gameStatus[3]}`;
         gameOver = true;
-    } else if (numOfTurn === 9){
+    } else if (numOfTurn > 9){
         winner = `The game is a draw!`;
         gameOver = true;
     }  
