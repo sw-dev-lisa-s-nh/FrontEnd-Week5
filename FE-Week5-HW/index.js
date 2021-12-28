@@ -164,7 +164,6 @@ for (let btnIndex=1; btnIndex <=9; btnIndex++) {
 //                      [3,5,7]
 //
 
-// THIS CHECK IS NOT WORKING!!!!
 function checkForWinner() {
     let winner = '';
     console.log(gameStatus);
