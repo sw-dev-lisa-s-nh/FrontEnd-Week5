@@ -1,19 +1,30 @@
-// Input from users for Tic-Tac-Toe
-// Keep a record of which location has which Symbol.
-// Method that evaluates whether or not a user wins?
+// Coding Steps:
+//
+// Using any of the tools you’ve worked with so far, 
+//         create a game of tic-tac-toe.
+// A heading should say whether it is X’s or O’s turn and change with 
+//         each move made.
+// Create a tic-tac-toe grid using your HTML element of choice. When a 
+//         cell in the grid is clicked, an X or O should appear in 
+//         that spot depending on whose turn it is.
+// A button should be available to clear the grid and restart the game.
+// When a player has won, or the board is full and the game results in
+//         a draw, a Bootstrap alert or similar Bootstrap 
+//         component should appear across the screen announcing the 
+//         winner.
+
 
 // DONE:  1. H1 Title for the Game
-// DONE:  2. Develop 3 * 3 grid layout
-//          table with 9 buttons
+// DONE:  2. Develop 3 * 3 grid layout -- table with 9 buttons
 // DONE:  3. Apply some CSS effects on the same. 
-//              a.  H3 -- Show text showing whose turn it is.
-// IN PROGRESS:  
+//           H3 -- Show text showing whose turn it is.
+// DONE:  
 //        4. Define a button to reset the game.
 //          * redraw the table 
 //          * alert box which appears and goes away
 //          * reset winning strategy
-//          game_status['','','','','','','','','','']
-//          NOTE:  index will be the position of the button
+//                  game_status['NO WINNER','','','','','','','','','']
+//      NOTE:  index will be the position of the button
 //              Winning combinations: 
 //                  Horizontal:
 //                      [1,2,3]
@@ -31,8 +42,12 @@
 
 
 let gameId = 0; // always increments, never resets
-let gameOver = false;
-let numOfTurn = 1;  // increments during a game, reset when game is reset
+let gameOver = false; // boolean, used to end the game
+
+// increments during a game, reset when game is reset
+let numOfTurn = 1; //turn counter
+
+// play position array
 let gameStatus = ['NO WINNER','','','','','','','','',''];
 
 onClick('reset-game', () => {  
@@ -84,13 +99,8 @@ function drawDOM() {
 }
 
 
-// *************************************************************
-// TO DO:  After each turn, check for a winner!
-// Check the winner
-// When the game is a draw, or there is a winner --
-//  Bootstrap alert or message across the screen 
-//          to announce the winner!
-// *************************************************************
+
+// Set-up an EventListener for each btn in the game.  
 
 for (let btnIndex=1; btnIndex <=9; btnIndex++) {
     onClick(`btn-p-${btnIndex}`, () => {
@@ -106,16 +116,23 @@ for (let btnIndex=1; btnIndex <=9; btnIndex++) {
                     //activeButton1.innerHTML = 'X';
                     gameStatus[btnIndex] = 'X';
                     console.log(`\t\t\t X's turn!`);
-                    headerText.innerHTML = "O's turn";
+                    headerText.innerHTML = `Turn #${numOfTurn+1}: O's turn`;
                 } else {
                     // O's turn
                     document.getElementById(`btn-p-${btnIndex}`).innerHTML = 'O'
                     //activeButton1.innerHTML = 'O';
                     gameStatus[btnIndex] = 'O';
                     console.log(`\t\t\t O's turn!`);
-                    headerText.innerHTML = "X's turn";
+                    headerText.innerHTML = `Turn #${numOfTurn+1}: X's turn`;
                 }
                 numOfTurn++;
+        // *************************************************************
+        // NOTE:  After each turn, check for a winner!
+        // Check the winner
+        // When the game is a draw, or there is a winner --
+        //  Bootstrap alert or message across the screen 
+        //          to announce the winner!
+        // *************************************************************
                 let winner = checkForWinner();
                 console.log(winner);
                 if (winner != '') {
@@ -136,8 +153,8 @@ for (let btnIndex=1; btnIndex <=9; btnIndex++) {
                         gameOverAlert.innerHTML = 'Tic-Tac-Toe Game has ended!';
                         tictactoeDiv.appendChild(gameOverAlert);  
                     }
-                    // Use setTimeout() to hide it again after 5 seconds
-                    setTimeout(() => $('#game-over').hide(), 2000);
+                    // Use setTimeout() to hide it again after 3 seconds
+                    setTimeout(() => $('#game-over').hide(), 3000);
                 }
                 
             } else {
@@ -150,18 +167,14 @@ for (let btnIndex=1; btnIndex <=9; btnIndex++) {
     });
 }
 
-//            Winning combinations: 
-//                  Horizontal:
-//                      [1,2,3]
-//                      [4,5,6]
-//                      [7,8,9]
-//                  Vertical:
-//                      [1,4,7]
-//                      [2,5,8]
-//                      [3,6,9]
-//                  Diagonal:
-//                      [1,5,9]
-//                      [3,5,7]
+
+//   Winning combinations: 
+//      Horizontal:
+//         [1,2,3] OR [4,5,6] OR [7,8,9]
+//      Vertical:
+//         [1,4,7] OR [2,5,8] OR [3,6,9]
+//      Diagonal:
+//         [1,5,9] OR [3,5,7]
 //
 
 function checkForWinner() {
