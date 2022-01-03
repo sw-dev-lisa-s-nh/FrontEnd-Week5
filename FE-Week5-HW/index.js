@@ -62,7 +62,7 @@ onClick('reset-game', () => {
     // clear the game and reset
     drawDOM();
     console.log('Tic-Tac-Toe Game Reset!');
-    headerText.innerHTML = "Game restarted!  X's turn";
+    headerText.innerHTML = "Game restarted -- Turn #1: X's turn";
 
 });
 
