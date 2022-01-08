@@ -30,16 +30,18 @@ h3 {
 }
 button {
     border: rgb(3, 41, 56);
+    border-color:rgb(105, 13, 233);
+    border-style: inset;
+    border-width: 1px;
 }
 
 .button-1 {
-    border-color: rgb(0, 9, 12);
     background-color: lightgrey;
     border-radius: 35%;
     padding: 2em;
     margin: 0.5em;
     color:  rgb(105, 13, 233);
-    font-size: 18px;
+    font-size: 16px;
     text-shadow: gray;
     font-weight: 5;
 }
@@ -47,14 +49,14 @@ button {
 .button-1:hover {
     background-color: white;
     color:  rgb(105, 13, 233);
+    border-color:rgb(105, 13, 233);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .button-2 {
-    border-color: rgb(0, 5, 7);
     background-color: rgb(13, 170, 233);
     color:  rgb(105, 13, 233);
-    font-size: 16px;
+    font-size: 14px;
     text-shadow: gray;
     margin: 1em;
     padding: 1em;
@@ -64,6 +66,7 @@ button {
 .button-2:hover {
     background-color: white;
     color:  rgb(105, 13, 233);
+    border-color:rgb(105, 13, 233);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
